@@ -1,0 +1,64 @@
+<form action="enter" method="post"><br>
+    {%csrf_token%}
+    
+    name: <input type="text" name="name"><br>
+    price: <input type="text" name="price"><br>
+    brand: <input type="text" name="brand"><br>
+    description: <input type="text" name="description"><br>
+<input type="submit" value="Enter details"><br>
+
+<p>
+
+     {{msg}}<br>
+    </p>
+
+</form>
+
+
+<form action="display">
+    <input type="submit" value="view product"><br>
+<table border="2">
+            <tr>
+            <td>id</td>
+            <td>Name</td>
+            <td>price</td>
+            <td>brand</td>
+            <td>description</td>
+            </tr>
+            {% for i in emp %}
+            <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.price}}</td>
+            <td>{{i.brand}}</td>
+            <td>{{i.description}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+</form>
+<form action="del" method="POST">
+    {%csrf_token%}
+
+   
+    name to delete: <input type="text"  name="name"><br>
+    <input type="submit" value="delete"><br>
+    </form>
+<form  action="update" method="post">
+        {%csrf_token%}
+    
+    old name: <input type="text" name="oldname"><br>
+    new name: <input type="text" name="newname"><br>
+    <input type="submit" value="update"><br>
+    
+    <p>
+    
+        {{msg1}}<br>
+    
+    </p>
+    
+    </form>
+    
+<form action="logout">
+    <input type="submit" value="logout">
+
+</form>
